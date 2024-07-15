@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính dãy Fibonacci</title>
+</head>
+<body>
+
+<h2>Tính dãy Fibonacci</h2>
+<label for="num-terms">Nhập số lượng số Fibonacci cần tính:</label>
+<input type="number" id="num-terms" min="1" step="1">
+<button onclick="calculateFibonacci()">Tính toán</button>
+<div id="result"></div>
+
+
+<script>
+    function calculateFibonacci() {
+        var numTerms = parseInt(document.getElementById('num-terms').value);
+        var resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = '';
+
+        for (var i = 0; i < numTerms; i++) {
+            var fibNumber = fibonacci(i);
+            var node = document.createElement("p");
+            var textNode = document.createTextNode("F(" + i + ") = " + fibNumber);
+            node.appendChild(textNode);
+            resultDiv.appendChild(node);
+        }
+    }
+
+    function fibonacci(n) {
+        if (n === 0) return 0;
+        else if (n === 1) return 1;
+        else return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+</script>
+</body>
+</html>
